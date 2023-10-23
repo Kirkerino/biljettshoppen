@@ -1,6 +1,9 @@
 public class Staplats extends Plats {
-    public Staplats(int platsnummer) {
-        super(platsnummer);
+    private double pris;
+    public Staplats(int platsnummer,double pris) {
+        super(platsnummer, pris);
+
     }
     // Specifika metoder för Staplats...
+
 }
