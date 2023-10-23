@@ -9,7 +9,7 @@
         private int Tid;
         private int biljetterTotalt;
         private int biljetterSalda;
-        private Biljett[][] sittplatsInfo;
+        private  Biljett[][] sittplatsInfo;
 
 
         public Event(String Arena, String Namn, LocalDateTime Datum, int Tid, int biljetterTotalt, int biljetterSalda, Biljett[][] sittplatsInfo) {
