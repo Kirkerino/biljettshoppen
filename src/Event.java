@@ -1,4 +1,3 @@
-
     import java.time.LocalDateTime;
 
     public class Event {
@@ -78,6 +77,49 @@
             this.sittplatsInfo = sittplatsInfo;
         }
 
+        // Boka biljetter
+
+        public boolean bookTickets(User user, int numberOfTickets) {
+            if (numberOfTickets > 5) {
+                System.out.println("Cannot book more than 5 tickets.");
+                return false;
+            }
+
+            int availableSeatsCount = 0;
+            for (Biljett[] row : sittplatsInfo) {
+                for (Biljett seat : row) {
+                    if (seat != null && !seat.platsUpptagen()) {
+                        availableSeatsCount++;
+                    }
+                }
+            }
+
+            if (availableSeatsCount < numberOfTickets) {
+                System.out.println("Not enough available seats.");
+                return false;
+            }
+
+            int bookedCount = 0;
+            for (Biljett[] row : sittplatsInfo) {
+                for (Biljett seat : row) {
+                    if (seat != null && !seat.platsUpptagen()) {
+                        seat.boka();
+                        bookedCount++;
+                        if (bookedCount == numberOfTickets) {
+                            break;
+                        }
+                    }
+                }
+                if (bookedCount == numberOfTickets) {
+                    break;
+                }
+            }
+
+            System.out.println(numberOfTickets + " tickets booked successfully!");
+            return true;
+        }
+
     }
+
 
 
